@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="google" content="notranslate">
+<title>The Wedding of Raka &amp; Nadia</title>
+<meta name="description" content="Undangan pernikahan Raka &amp; Nadia">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Wedding of Raka &amp; Nadia">
+<meta property="og:description" content="Kami mengundang Anda untuk hadir di hari bahagia kami.">
+<!-- 🔗 GANTI: og:image harus URL penuh setelah deploy, contoh https://namadomain.vercel.app/assets/photos/cover.jpg -->
+<meta property="og:image" content="https://GANTI-DOMAIN-ANDA.vercel.app/assets/photos/cover.jpg">
+
+<!-- 🔗 LINK EXTERNAL: Google Fonts (butuh internet; jika gagal, font cadangan otomatis dipakai) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,500;1,6..96,600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<script src="js/config.js"></script>
+<script src="js/script.js" defer></script>
+</head>
+<body class="locked">
+
+<!-- COVER -->
+<section class="cover" id="cover" aria-label="Sampul undangan">
+  <div class="cover__bg" data-bg="coverPhoto"></div>
+  <div class="cover__inner">
+    <p class="small">The Wedding of</p>
+    <h1 class="names"><span data-t="groom.nick"></span><span class="amp">&amp;</span><span data-t="bride.nick"></span></h1>
+    <p class="small">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+    <p class="guest" id="guestName">Tamu Undangan</p>
+    <button class="btn" id="openBtn" type="button">Buka Undangan</button>
+  </div>
+</section>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__bg" data-bg="heroPhoto"></div>
+    <div class="hero__inner">
+      <p class="small">The Wedding of</p>
+      <h2 class="names"><span data-t="groom.nick"></span><span class="amp">&amp;</span><span data-t="bride.nick"></span></h2>
+      <p class="hero__date" data-t="heroDate"></p>
+    </div>
+  </section>
+
+  <!-- AYAT -->
+  <section class="sec sec--paper sec--quote">
+    <div class="wrap narrow">
+      <blockquote>
+        <p data-t="quote.text"></p>
+        <footer data-t="quote.source"></footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- MEMPELAI -->
+  <section class="sec sec--mist" id="couple">
+    <div class="wrap">
+      <h2 class="title">Our Wedding</h2>
+      <p class="lead" data-t="opening"></p>
+      <div class="couple">
+        <article class="person">
+          <div class="person__photo" data-bg="groom.photo"></div>
+          <h3 data-t="groom.name"></h3>
+          <p data-t="groom.parents"></p>
+          <a class="ig" data-href="groom.instagram" target="_blank" rel="noopener"><!-- 🔗 LINK EXTERNAL: Instagram --><span data-t="groom.igLabel"></span></a>
+        </article>
+        <article class="person">
+          <div class="person__photo" data-bg="bride.photo"></div>
+          <h3 data-t="bride.name"></h3>
+          <p data-t="bride.parents"></p>
+          <a class="ig" data-href="bride.instagram" target="_blank" rel="noopener"><!-- 🔗 LINK EXTERNAL: Instagram --><span data-t="bride.igLabel"></span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACARA -->
+  <section class="sec sec--paper" id="event">
+    <div class="wrap">
+      <h2 class="title">Wedding Event</h2>
+      <div class="events" id="events"></div>
+      <div class="map" id="mapBox">
+        <!-- 🔗 LINK EXTERNAL: Google Maps embed (atur di js/config.js → mapEmbed) -->
+        <iframe id="mapFrame" title="Lokasi acara" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="sec sec--forest" id="countdown">
+    <div class="wrap narrow center">
+      <h2 class="title title--light">Menuju Hari Bahagia</h2>
+      <div class="count" id="count" aria-live="off">
+        <div><b id="cd-d">00</b><span>Hari</span></div>
+        <div><b id="cd-h">00</b><span>Jam</span></div>
+        <div><b id="cd-m">00</b><span>Menit</span></div>
+        <div><b id="cd-s">00</b><span>Detik</span></div>
+      </div>
+      <p class="count__done" id="countDone" hidden>Hari yang dinanti telah tiba.</p>
+    </div>
+  </section>
+
+  <!-- LOVE STORY -->
+  <section class="sec sec--paper" id="story">
+    <div class="wrap narrow">
+      <h2 class="title">Love Story</h2>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section class="sec sec--mist" id="gallery">
+    <div class="wrap">
+      <h2 class="title">Our Moment</h2>
+      <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- HADIAH -->
+  <section class="sec sec--paper" id="gift">
+    <div class="wrap narrow">
+      <h2 class="title">Wedding Gift</h2>
+      <p class="lead" data-t="giftText"></p>
+      <div class="gifts" id="gifts"></div>
+    </div>
+  </section>
+
+  <!-- UCAPAN & RSVP -->
+  <section class="sec sec--mist" id="wishes">
+    <div class="wrap narrow">
+      <h2 class="title">Ucapan &amp; Doa</h2>
+
+      <div class="stats" id="stats">
+        <div><b id="st-hadir">0</b><span>Hadir</span></div>
+        <div><b id="st-tidak">0</b><span>Tidak hadir</span></div>
+        <div><b id="st-ragu">0</b><span>Masih ragu</span></div>
+      </div>
+
+      <form class="form" id="wishForm" novalidate>
+        <label for="fName">Nama</label>
+        <input id="fName" name="name" type="text" maxlength="40" autocomplete="name" required>
+
+        <label for="fMsg">Ucapan &amp; doa</label>
+        <textarea id="fMsg" name="message" rows="4" maxlength="500" required></textarea>
+
+        <fieldset>
+          <legend>Konfirmasi kehadiran</legend>
+          <label class="seg"><input type="radio" name="attendance" value="hadir" checked><span>Hadir</span></label>
+          <label class="seg"><input type="radio" name="attendance" value="tidak"><span>Tidak hadir</span></label>
+          <label class="seg"><input type="radio" name="attendance" value="ragu"><span>Masih ragu</span></label>
+        </fieldset>
+
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn--solid" type="submit" id="fSend">Kirim ucapan</button>
+        <p class="form__msg" id="fStatus" role="status"></p>
+      </form>
+
+      <p class="demo" id="demoNote" hidden>Mode lokal: ucapan hanya tersimpan di browser ini. API aktif setelah deploy ke Vercel dan database terhubung.</p>
+      <div class="wishes" id="wishList"></div>
+      <button class="btn btn--ghost" type="button" id="moreBtn" hidden>Lihat lebih banyak</button>
+    </div>
+  </section>
+
+  <!-- PENUTUP -->
+  <footer class="sec sec--forest foot">
+    <div class="wrap narrow center">
+      <p class="lead lead--light" data-t="closing"></p>
+      <p class="small">Kami yang berbahagia</p>
+      <p class="names names--sm"><span data-t="groom.nick"></span><span class="amp">&amp;</span><span data-t="bride.nick"></span></p>
+      <p class="foot__links">
+        <!-- 🔗 LINK EXTERNAL: Instagram & WhatsApp (atur di js/config.js) -->
+        <a data-href="groom.instagram" target="_blank" rel="noopener">Instagram</a>
+        <a data-href="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      </p>
+    </div>
+  </footer>
+</main>
+
+<!-- MUSIK -->
+<audio id="bgm" loop preload="none"></audio>
+<button class="music" id="musicBtn" type="button" aria-label="Putar atau jeda musik" hidden>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z" fill="currentColor"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
+</button>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__x" id="lbClose" type="button" aria-label="Tutup">&times;</button>
+  <button class="lightbox__n lightbox__n--p" id="lbPrev" type="button" aria-label="Sebelumnya">&#8249;</button>
+  <img id="lbImg" alt="">
+  <button class="lightbox__n lightbox__n--n" id="lbNext" type="button" aria-label="Berikutnya">&#8250;</button>
+</div>
+
+</body>
+</html>
